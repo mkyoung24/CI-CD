@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header th:fragment="header-frag">
+  <!-- navbar start-->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="top-navbar">
+    <a class="navbar-brand text-bold dohyeon" href="/main">Ca-Gong</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item" th:if="${session.loginState != 'login'}">
+          <a class="nav-link" href="/cagong/regist">회원가입</a>
+        </li>
+        <li class="nav-item" th:if="${session.loginState != 'login'}">
+          <a class="nav-link" href="/cagong/login">로그인</a>
+        </li>
+
+        <li class="nav-item" th:if="${session.loginState == 'login'}">
+          <a class="nav-link text-bold" th:text="${session.name}"></a>
+        </li>
+        <li class="nav-item" th:if="${session.loginState == 'login'}">
+          <span class="navbar-text">님 환영합니다.</span>
+        </li>
+        <li class="nav-item" th:if="${session.loginState == 'login'}">
+          <a class="nav-link" href="/logout">로그아웃</a>
+        </li>
+        <li class="nav-item" th:if="${session.role == '카페주인'}">
+          <a class="nav-link" href="#">카페 등록</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- navbar end-->
+</header>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>cagong login page</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/signin.css" rel="stylesheet">
+
+    <!-- javascript setup -->
+    <script src="/js/jquery-3.5.0.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- javascript setup end -->
+</head>
+
+<body>
+<div class="sign-total-form">
+
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item w-50 ">
+                <a class="nav-link active text-warning font-weight-bold" href="#">로그인</a>
+            </li>
+            <li class="nav-item w-50">
+                <a class="nav-link text-muted" href="/cagong/regist">회원가입</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="form-signin">
+        <!--    <div class="text-center" id="login-logo">-->
+        <!--        <a href="/home">-->
+        <!--            <img class="mb-4" src="/img/cafe_login.png" alt="" width="250" height="150">-->
+        <!--        </a>-->
+        <!--    </div>-->
+        <div class="form-group">
+            <label class="text-left" for="email"><b>이메일</b></label>
+            <input type="email" class="form-control" placeholder="이메일을 입력해주세요." id="email" name="email"
+                   aria-describedby="emailMessage">
+            <small class="form-text text-muted" id="emailMessage"> </small>
+        </div>
+        <div class="form-group">
+            <label class="text-left" for="password"><b>비밀번호</b></label>
+            <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요." id="password" name="password">
+            <small id="passwordMessage" class="form-text text-muted"> </small>
+        </div>
+        <!--    <div class="form-group form-check">-->
+        <!--        <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+        <!--        <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+        <!--    </div>-->
+        <button type="button" class="btn btn-lg btn-warning btn-block text-white font-weight-bold" id="loginMember">
+            로그인
+        </button>
+        <p class="mt-5 mb-3 text-muted text-center"><strong>Copyright &copy; 2023 <a
+                href="#">MKY</a>.</strong> <br>
+            All rights reserved.
+        </p>
+    </div>
+</div>
+<script src="/js/sweetalert2.all.min.js"></script>
+<script src="/js/app/user/login.js"></script>
+
+</body>
+
+</html>

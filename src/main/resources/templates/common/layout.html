@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:insert="~{common/head :: head-setup}">
+  <title>Ca-Gong</title>
+  <!--    meta tag & CSS Setting-->
+</head>
+
+<body>
+<!-- main_sg.js page에서 전체 background-img 정하기 위해 div로 전체를 감싼 것-->
+<div id="background">
+  <!--    header part setting-->
+  <header th:insert="~{common/header :: header-frag}"></header>
+  <!--    content-->
+  <section layout:fragment="content"></section>
+
+  <!--    footer part setting-->
+  <footer th:insert="~{common/footer :: footer-frag}"></footer>
+
+</div>
+<script src="/js/app/total.js"></script>
+
+</body>
+</html>
