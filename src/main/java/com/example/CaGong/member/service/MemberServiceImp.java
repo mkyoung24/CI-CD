@@ -1,15 +1,18 @@
 package com.example.CaGong.member.service;
 
+import com.example.CaGong.common.error.InfoNotExistedException;
 import com.example.CaGong.member.dto.MemberDTO;
 import com.example.CaGong.member.entity.Member;
 import com.example.CaGong.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class MemberServiceImp implements MemberService{
 
     private final MemberRepository memberRepository;
@@ -20,9 +23,9 @@ public class MemberServiceImp implements MemberService{
     }
 
     public MemberDTO login(MemberDTO dto) {
-        Optional<Member> dbInfo = memberRepository.findByMemEmailAndAndMemPw(dto.getMemEmail(), dto.getMemPw());
+        Member member = memberRepository.findByMemEmailAndAndMemPw(dto.getMemEmail(), dto.getMemPw()).orElseThrow(() -> new InfoNotExistedException());
 
-        return dbInfo.isPresent() ? entityToDto(dbInfo.get()) : null;
+        return entityToDto(member);
     }
 
 }

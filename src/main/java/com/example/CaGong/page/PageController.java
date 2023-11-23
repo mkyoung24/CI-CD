@@ -14,18 +14,18 @@ public class PageController {
 
     @GetMapping("/login")
     public String login() {
-        return "/user/login";
+        return "user/login";
     }
 
     @GetMapping("/regist")
     public String regist() {
 
-        return "/user/regist";
+        return "user/regist";
     }
 
     @GetMapping("")
     public String main() {
 
-        return "/common/header";
+        return "common/header";
     }
 }

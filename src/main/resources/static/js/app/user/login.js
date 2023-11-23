@@ -60,17 +60,37 @@ $(function () {
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data),
                 success: function (data) {
-                    Swal.fire({
-                        title: 'Login Success!',
-                        text: '성공적으로 로그인이 되었습니다.',
-                        icon: 'success',
-                        confirmButtonText: 'OK',
-                        onAfterClose: () => {
-                            window.location.href = '/cagong';
-                        }
-                    });
+                    var result = Number(data);
+                    switch (result) {
+                        case 0:
+                            Swal.fire({
+                                title: 'Login Success!',
+                                text: '성공적으로 로그인이 되었습니다.',
+                                icon: 'success',
+                                confirmButtonText: 'OK',
+                                onAfterClose: () => {
+                                    window.location.href = '/cagong';
+                                }
+                            });
+                            break;
+                        case 1:
+                            Swal.fire({
+                                title: 'Wrong Member Info.',
+                                text: '로그인 정보가 일치하지 않습니다.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                            break;
+                        default:
+                            Swal.fire({
+                                title: 'Process Error!',
+                                text: '로그인에 오류가 발생했습니다. 잠시 후 다시 진행해주세요.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                            break;
+                    }
                 },
-
                 error: function (error) {
                     Swal.fire({
                         title: 'Server Error!',
