@@ -28,4 +28,6 @@ public class PageController {
 
         return "common/header";
     }
+    
+    //ci 테스트
 }
