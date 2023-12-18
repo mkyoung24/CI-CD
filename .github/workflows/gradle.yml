@@ -67,7 +67,7 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/cagong
           docker stop $(docker ps -a -q)
           docker start mariadb
-          docker run --name cagong -p 8008:8008 --network prac -d mky97/cagong
+          docker run --name cagong -p 8008:8008 --network prac -d ${{ secrets.DOCKER_USERNAME }}/cagong
           docker rm $(docker ps --filter 'status=exited' -a -q)
           docker image prune -a -f
       
