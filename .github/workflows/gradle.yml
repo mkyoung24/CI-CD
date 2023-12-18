@@ -58,12 +58,6 @@ jobs:
       run: docker push ${{ secrets.DOCKER_USERNAME }}/cagong
 
     #Deploy EC2 (5)
-    deploy-to-ec2:
-
-    needs: build-and-push-docker
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
