@@ -17,8 +17,7 @@ permissions:
   contents: read
 
 env:
-  DOCKER_IMAGE_NAME: 
-  EC2_HOST: 
+  EC2_HOST: ${{ secrets.EC2_HOST }}
   EC2_SSH_USER: ec2-user
   PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
 
