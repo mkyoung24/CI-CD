@@ -16,6 +16,12 @@ on:
 permissions:
   contents: read
 
+env:
+  DOCKER_IMAGE_NAME: 
+  EC2_HOST: 
+  EC2_SSH_USER: ec2-user
+  PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,7 +44,7 @@ jobs:
     
     # Docker 이미지 Build (2)
     - name: docker image build
-      run: docker build -t mky97/cagong .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/cagong .
     
     # DockerHub Login (3)
     - name: docker login 
@@ -49,5 +55,26 @@ jobs:
 
     # Docker Hub push (4)
     - name: docker Hub push
-      run: docker push mky97/cagong
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/cagong
+
+    #Deploy EC2 (5)
+    deploy-to-ec2:
+
+    needs: build-and-push-docker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.EC2_HOST }}
+        username: ${{ env.EC2_SSH_USER }}
+        key: ${{ env.PRIVATE_KEY }}
+        script: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/cagong
+          docker stop $(docker ps -a -q)
+          docker start mariadb
+          docker run --name cagong -p 8008:8008 --network prac -d mky97/cagong
+          docker rm $(docker ps --filter 'status=exited' -a -q)
+          docker image prune -a -f
       
